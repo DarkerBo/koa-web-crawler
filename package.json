@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10",
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0"
+  }
+}
