@@ -27,6 +27,7 @@ router.get('/', async (ctx) => {
   await page.keyboard.press('Enter');
 
   // 获取歌曲列表的 iframe
+  // 等待保证页面加载完成
   await page.waitForTimeout(2000);
   let iframe = await page.frames().find(f => f.name() === 'contentFrame');
   const SONG_LS_SELECTOR = await iframe.$('.srchsongst');
@@ -64,9 +65,9 @@ router.get('/', async (ctx) => {
   // });
 
   // 写入文件
-  let writerStream = fs.createWriteStream('歌词.txt');
-  writerStream.write(lyricCtn, 'UTF8');
-  writerStream.end();
+  // let writerStream = fs.createWriteStream('歌词.txt');
+  // writerStream.write(lyricCtn, 'UTF8');
+  // writerStream.end();
 
   // 获取评论数量
   const commentCount = await iframe.$eval('.sub.s-fc3', e => e.innerText);
@@ -80,7 +81,7 @@ router.get('/', async (ctx) => {
     return ctn;
   });
 
-  console.log(commentList);
+  // console.log(commentList);
 
   browser.close();
 
