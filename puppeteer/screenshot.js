@@ -1,3 +1,5 @@
+// 跳转到指定网站并截图
+
 const Koa = require('koa');
 const Router = require('koa-router');
 const puppeteer = require('puppeteer');
