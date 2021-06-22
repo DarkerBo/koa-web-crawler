@@ -91,6 +91,7 @@ router.get('/', async (ctx) => {
 
     // 更新选择的分页
     const newPageNum = await page.evaluate(sel => {
+      // 按钮的文本需要通过text()获取,而不能用innerText
       return $(sel).text();
     }, COMMENT_SELECT_PAGE);
 
